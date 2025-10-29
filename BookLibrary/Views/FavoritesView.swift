@@ -3,6 +3,8 @@ import SwiftUI
 struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
     @ObservedObject var mainViewModel: MainViewModel
+    @State private var selectedBook: Book?
+    @State private var isNavigating = false
 
     var favoriteBooks: [Book] {
         mainViewModel.books.filter { favoritesManager.isFavorite($0) }
@@ -18,9 +20,11 @@ struct FavoritesView: View {
                     ScrollView {
                         LazyVStack(spacing: 16) {
                             ForEach(favoriteBooks, id: \.id) { book in
-                                NavigationLink(destination: BookDetailsView(book: book)) {
+                                Button(action: {
+                                    selectedBook = book
+                                    isNavigating = true
+                                }) {
                                     BookCard(book: book)
-                                        .environmentObject(favoritesManager)
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 .padding(.horizontal)
@@ -30,6 +34,18 @@ struct FavoritesView: View {
                     }
                     .background(Color.black.edgesIgnoringSafeArea(.all))
                 }
+                
+                NavigationLink(
+                    destination: Group {
+                        if let book = selectedBook {
+                            BookDetailsView(book: book)
+                        }
+                    },
+                    isActive: $isNavigating
+                ) {
+                    EmptyView()
+                }
+                .hidden()
             }
             .navigationBarHidden(true)
         }
