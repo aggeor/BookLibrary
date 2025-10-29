@@ -6,6 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		074109E32EB203DC00E5CD55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074109E02EB203DC00E5CD55 /* Assets.xcassets */; };
+		074109E42EB203DC00E5CD55 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109D92EB203DC00E5CD55 /* Book.swift */; };
+		074109E52EB203DC00E5CD55 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109DB2EB203DC00E5CD55 /* MainViewModel.swift */; };
+		074109E62EB203DC00E5CD55 /* BookCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109DD2EB203DC00E5CD55 /* BookCard.swift */; };
+		074109E72EB203DC00E5CD55 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109DE2EB203DC00E5CD55 /* MainView.swift */; };
+		074109E82EB203DC00E5CD55 /* BookLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109E12EB203DC00E5CD55 /* BookLibraryApp.swift */; };
+		074109EC2EB203F400E5CD55 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109EA2EB203F100E5CD55 /* NetworkManager.swift */; };
+		074109F02EB208C200E5CD55 /* BooksEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109EF2EB208BD00E5CD55 /* BooksEndpoint.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		074109AE2EB1FD7000E5CD55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,14 +38,17 @@
 		0741099E2EB1FD7000E5CD55 /* BookLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		074109AD2EB1FD7000E5CD55 /* BookLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		074109B72EB1FD7000E5CD55 /* BookLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		074109D92EB203DC00E5CD55 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		074109DB2EB203DC00E5CD55 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		074109DD2EB203DC00E5CD55 /* BookCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCard.swift; sourceTree = "<group>"; };
+		074109DE2EB203DC00E5CD55 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		074109E02EB203DC00E5CD55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		074109E12EB203DC00E5CD55 /* BookLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLibraryApp.swift; sourceTree = "<group>"; };
+		074109EA2EB203F100E5CD55 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		074109EF2EB208BD00E5CD55 /* BooksEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		074109A02EB1FD7000E5CD55 /* BookLibrary */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BookLibrary;
-			sourceTree = "<group>";
-		};
 		074109B02EB1FD7000E5CD55 /* BookLibraryTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BookLibraryTests;
@@ -75,7 +89,7 @@
 		074109952EB1FD7000E5CD55 = {
 			isa = PBXGroup;
 			children = (
-				074109A02EB1FD7000E5CD55 /* BookLibrary */,
+				074109E22EB203DC00E5CD55 /* BookLibrary */,
 				074109B02EB1FD7000E5CD55 /* BookLibraryTests */,
 				074109BA2EB1FD7000E5CD55 /* BookLibraryUITests */,
 				0741099F2EB1FD7000E5CD55 /* Products */,
@@ -92,6 +106,53 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		074109DA2EB203DC00E5CD55 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				074109EF2EB208BD00E5CD55 /* BooksEndpoint.swift */,
+				074109D92EB203DC00E5CD55 /* Book.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		074109DC2EB203DC00E5CD55 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				074109DB2EB203DC00E5CD55 /* MainViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		074109DF2EB203DC00E5CD55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				074109DD2EB203DC00E5CD55 /* BookCard.swift */,
+				074109DE2EB203DC00E5CD55 /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		074109E22EB203DC00E5CD55 /* BookLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				074109EE2EB2064E00E5CD55 /* Utils */,
+				074109DA2EB203DC00E5CD55 /* Models */,
+				074109DC2EB203DC00E5CD55 /* ViewModels */,
+				074109DF2EB203DC00E5CD55 /* Views */,
+				074109E02EB203DC00E5CD55 /* Assets.xcassets */,
+				074109E12EB203DC00E5CD55 /* BookLibraryApp.swift */,
+			);
+			path = BookLibrary;
+			sourceTree = "<group>";
+		};
+		074109EE2EB2064E00E5CD55 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				074109EA2EB203F100E5CD55 /* NetworkManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +167,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				074109A02EB1FD7000E5CD55 /* BookLibrary */,
 			);
 			name = BookLibrary;
 			packageProductDependencies = (
@@ -212,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074109E32EB203DC00E5CD55 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +295,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074109EC2EB203F400E5CD55 /* NetworkManager.swift in Sources */,
+				074109E42EB203DC00E5CD55 /* Book.swift in Sources */,
+				074109F02EB208C200E5CD55 /* BooksEndpoint.swift in Sources */,
+				074109E52EB203DC00E5CD55 /* MainViewModel.swift in Sources */,
+				074109E62EB203DC00E5CD55 /* BookCard.swift in Sources */,
+				074109E72EB203DC00E5CD55 /* MainView.swift in Sources */,
+				074109E82EB203DC00E5CD55 /* BookLibraryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +474,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
@@ -452,7 +518,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.7;

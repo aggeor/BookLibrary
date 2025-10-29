@@ -1,0 +1,89 @@
+import SwiftUI
+
+struct MainView: View {
+    // 2 columns grid
+    private let adaptiveColumns = [
+        GridItem(.flexible())
+    ]
+
+    @StateObject var mainViewModel: MainViewModel = MainViewModel()
+    
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 0) {
+                headerView
+                if mainViewModel.isLoading{
+                    loadingView
+                } else if mainViewModel.books.isEmpty {
+                    emptyView
+                } else {
+                    booksView
+                }
+            }
+            .navigationBarHidden(true)
+            .task {
+                if mainViewModel.books.isEmpty {
+                    await mainViewModel.fetchBooks()
+                }
+            }
+        }
+    }
+    
+    var headerView: some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text(mainViewModel.title)
+                    .font(.title2)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(.horizontal, 16)
+        }
+        .padding(.vertical, 12)
+        .background(Color.black)
+    }
+    
+    
+    var loadingView: some View{
+        ZStack{
+            Color.black
+                .edgesIgnoringSafeArea(.all)
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .scaleEffect(1.5)
+        }
+    }
+    
+    var emptyView: some View{
+        VStack(spacing: 0) {
+            Text("No books found")
+                .font(.title3)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 16)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.vertical, 12)
+        .background(Color.black)
+    }
+    
+    var booksView: some View{
+        ScrollView {
+            LazyVGrid(columns: adaptiveColumns, spacing: 16) {
+                ForEach(mainViewModel.books, id: \.id) { book in
+                    BookCard(book: book)
+                        .onAppear {
+                            Task {
+                                await mainViewModel.fetchNextIfNeeded(currentBook: book)
+                            }
+                        }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
+        }
+        .background(Color.black.edgesIgnoringSafeArea(.all))
+    }
+}
