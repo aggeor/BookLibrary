@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct BookLibraryApp: App {
+struct BookLibrary: App {
     @StateObject var favoritesManager = FavoritesManager()
     @StateObject var mainViewModel: MainViewModel = MainViewModel()
     
