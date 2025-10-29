@@ -29,19 +29,11 @@
 			remoteGlobalIDString = 0741099D2EB1FD7000E5CD55;
 			remoteInfo = BookLibrary;
 		};
-		074109B82EB1FD7000E5CD55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 074109962EB1FD7000E5CD55 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0741099D2EB1FD7000E5CD55;
-			remoteInfo = BookLibrary;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0741099E2EB1FD7000E5CD55 /* BookLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		074109AD2EB1FD7000E5CD55 /* BookLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		074109B72EB1FD7000E5CD55 /* BookLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		074109D92EB203DC00E5CD55 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		074109DB2EB203DC00E5CD55 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		074109DD2EB203DC00E5CD55 /* BookCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCard.swift; sourceTree = "<group>"; };
@@ -79,13 +71,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		074109B42EB1FD7000E5CD55 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -103,7 +88,6 @@
 			children = (
 				0741099E2EB1FD7000E5CD55 /* BookLibrary.app */,
 				074109AD2EB1FD7000E5CD55 /* BookLibraryTests.xctest */,
-				074109B72EB1FD7000E5CD55 /* BookLibraryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,26 +188,6 @@
 			productReference = 074109AD2EB1FD7000E5CD55 /* BookLibraryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		074109B62EB1FD7000E5CD55 /* BookLibraryUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 074109C72EB1FD7000E5CD55 /* Build configuration list for PBXNativeTarget "BookLibraryUITests" */;
-			buildPhases = (
-				074109B32EB1FD7000E5CD55 /* Sources */,
-				074109B42EB1FD7000E5CD55 /* Frameworks */,
-				074109B52EB1FD7000E5CD55 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				074109B92EB1FD7000E5CD55 /* PBXTargetDependency */,
-			);
-			name = BookLibraryUITests;
-			packageProductDependencies = (
-			);
-			productName = BookLibraryUITests;
-			productReference = 074109B72EB1FD7000E5CD55 /* BookLibraryUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -238,10 +202,6 @@
 						CreatedOnToolsVersion = 26.0.1;
 					};
 					074109AC2EB1FD7000E5CD55 = {
-						CreatedOnToolsVersion = 26.0.1;
-						TestTargetID = 0741099D2EB1FD7000E5CD55;
-					};
-					074109B62EB1FD7000E5CD55 = {
 						CreatedOnToolsVersion = 26.0.1;
 						TestTargetID = 0741099D2EB1FD7000E5CD55;
 					};
@@ -263,7 +223,6 @@
 			targets = (
 				0741099D2EB1FD7000E5CD55 /* BookLibrary */,
 				074109AC2EB1FD7000E5CD55 /* BookLibraryTests */,
-				074109B62EB1FD7000E5CD55 /* BookLibraryUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -278,13 +237,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		074109AB2EB1FD7000E5CD55 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		074109B52EB1FD7000E5CD55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -319,13 +271,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		074109B32EB1FD7000E5CD55 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -333,11 +278,6 @@
 			isa = PBXTargetDependency;
 			target = 0741099D2EB1FD7000E5CD55 /* BookLibrary */;
 			targetProxy = 074109AE2EB1FD7000E5CD55 /* PBXContainerItemProxy */;
-		};
-		074109B92EB1FD7000E5CD55 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0741099D2EB1FD7000E5CD55 /* BookLibrary */;
-			targetProxy = 074109B82EB1FD7000E5CD55 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -554,7 +494,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8J642XXF24;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ageor.BookLibraryTests;
@@ -580,7 +520,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8J642XXF24;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ageor.BookLibraryTests;
@@ -594,58 +534,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookLibrary.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookLibrary";
-				XROS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Release;
-		};
-		074109C82EB1FD7000E5CD55 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8J642XXF24;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MACOSX_DEPLOYMENT_TARGET = 15.7;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ageor.BookLibraryUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BookLibrary;
-				XROS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		074109C92EB1FD7000E5CD55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8J642XXF24;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MACOSX_DEPLOYMENT_TARGET = 15.7;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ageor.BookLibraryUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BookLibrary;
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
@@ -676,15 +564,6 @@
 			buildConfigurations = (
 				074109C52EB1FD7000E5CD55 /* Debug */,
 				074109C62EB1FD7000E5CD55 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		074109C72EB1FD7000E5CD55 /* Build configuration list for PBXNativeTarget "BookLibraryUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				074109C82EB1FD7000E5CD55 /* Debug */,
-				074109C92EB1FD7000E5CD55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
