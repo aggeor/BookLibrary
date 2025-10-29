@@ -98,7 +98,7 @@ Comprehensive unit tests are included using **XCTest** with dependency injection
 
 ### Test Suite
 
-**NetworkManagerTests** (8 tests)
+**NetworkManagerTests** (10 tests)
 - Tests the network layer with `MockURLProtocol` for request interception
 - Validates:
   - **Success cases**: Valid JSON decoding with complete book data, HTTP 200 status code
