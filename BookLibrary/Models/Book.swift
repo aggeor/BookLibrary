@@ -1,6 +1,6 @@
 import Foundation
 
-struct BookDataWrapper: Decodable {
+struct BookDataWrapper: Encodable, Decodable {
     let count: Int
     let next: String?
     let previous: String?
