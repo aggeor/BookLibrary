@@ -22,6 +22,7 @@ struct BookCard: View {
             FavoriteButton(book: book)
                 .environmentObject(favoritesManager)
         }
+        .contentShape(Rectangle()) 
     }
     
     func imageView(url: URL) -> some View {
