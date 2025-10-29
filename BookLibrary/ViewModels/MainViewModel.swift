@@ -20,7 +20,7 @@ class MainViewModel: ObservableObject {
 
         do {
             let wrapper = try await networkManager.fetch(from: BooksEndpoint(page: currentPage)) as BookDataWrapper
-            totalPages = Int(ceil(Double(wrapper.count) / Double(wrapper.results.count)))
+            totalPages = wrapper.count
             books.append(contentsOf: wrapper.results)
             currentPage += 1
         } catch {
