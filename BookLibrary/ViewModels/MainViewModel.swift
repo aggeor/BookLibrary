@@ -10,8 +10,8 @@ class MainViewModel: ObservableObject {
     private var totalPages = 1
     private let networkManager: NetworkManaging
     
-    init(networkManager: NetworkManaging = NetworkManager.shared) {
-        self.networkManager = networkManager
+    init(networkManager: NetworkManaging? = nil) {
+        self.networkManager = networkManager ?? NetworkManager.shared
     }
     
     func fetchBooks() async {
@@ -19,7 +19,7 @@ class MainViewModel: ObservableObject {
         defer { isInitialLoading = false }
 
         do {
-            let wrapper = try await networkManager.fetch(from: BooksEndpoint()) as BookDataWrapper
+            let wrapper = try await networkManager.fetch(from: BooksEndpoint(page: 1)) as BookDataWrapper
             totalPages = Int(ceil(Double(wrapper.count) / Double(wrapper.results.count)))
             books.append(contentsOf: wrapper.results)
         } catch {
@@ -35,7 +35,7 @@ class MainViewModel: ObservableObject {
         defer { isPaginationLoading = false }
 
         do {
-            let wrapper = try await networkManager.fetch(from: BooksNextEndpoint(page:currentPage + 1)) as BookDataWrapper
+            let wrapper = try await networkManager.fetch(from: BooksEndpoint(page:currentPage + 1)) as BookDataWrapper
             currentPage += 1
             totalPages = Int(ceil(Double(wrapper.count) / Double(wrapper.results.count)))
             books.append(contentsOf: wrapper.results)
