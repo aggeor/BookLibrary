@@ -2,6 +2,7 @@ import SwiftUI
 
 struct BookCard: View {
     var book: Book
+    @EnvironmentObject var favoritesManager: FavoritesManager
     
     // Adjust frame for each book card
     let frameWidth = UIScreen.main.bounds.width / 5
@@ -19,6 +20,7 @@ struct BookCard: View {
             }
             textsView
             FavoriteButton(book: book)
+                .environmentObject(favoritesManager)
         }
     }
     

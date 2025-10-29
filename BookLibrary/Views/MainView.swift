@@ -1,12 +1,13 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var favoritesManager: FavoritesManager
     // 2 columns grid
     private let adaptiveColumns = [
         GridItem(.flexible())
     ]
 
-    @StateObject var mainViewModel: MainViewModel = MainViewModel()
+    @ObservedObject var mainViewModel: MainViewModel
     
     var body: some View {
         NavigationView {
@@ -27,12 +28,14 @@ struct MainView: View {
                 }
             }
         }
+        .navigationTitle("Books")
+        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
     
     var headerView: some View {
         VStack(spacing: 12) {
             HStack {
-                Text(mainViewModel.title)
+                Text("Popular Books")
                     .font(.title2)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -79,6 +82,7 @@ struct MainView: View {
                                     await mainViewModel.fetchNextIfNeeded(currentBook: book)
                                 }
                             }
+                            .environmentObject(favoritesManager)
                     }
                     .buttonStyle(PlainButtonStyle())
                 }

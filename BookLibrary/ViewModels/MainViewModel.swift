@@ -4,7 +4,6 @@ import Combine
 @MainActor
 class MainViewModel: ObservableObject {
     @Published var books: [Book] = []
-    @Published var title: String = "Popular Books"
     private var currentPage = 1
     private var totalPages = 1
     var isLoading = false

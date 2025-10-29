@@ -18,6 +18,7 @@
 		074109F22EB2154600E5CD55 /* BookDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109F12EB2154400E5CD55 /* BookDetails.swift */; };
 		074109F42EB22D1B00E5CD55 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109F32EB22D1600E5CD55 /* FavoritesManager.swift */; };
 		074109F62EB22E1100E5CD55 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109F52EB22E0D00E5CD55 /* FavoriteButton.swift */; };
+		074109F82EB22FCD00E5CD55 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109F72EB22FC700E5CD55 /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		074109F12EB2154400E5CD55 /* BookDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetails.swift; sourceTree = "<group>"; };
 		074109F32EB22D1600E5CD55 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		074109F52EB22E0D00E5CD55 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		074109F72EB22FC700E5CD55 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -132,6 +134,7 @@
 		074109DF2EB203DC00E5CD55 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				074109F72EB22FC700E5CD55 /* FavoritesView.swift */,
 				074109F52EB22E0D00E5CD55 /* FavoriteButton.swift */,
 				074109F12EB2154400E5CD55 /* BookDetails.swift */,
 				074109DD2EB203DC00E5CD55 /* BookCard.swift */,
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074109F82EB22FCD00E5CD55 /* FavoritesView.swift in Sources */,
 				074109EC2EB203F400E5CD55 /* NetworkManager.swift in Sources */,
 				074109E42EB203DC00E5CD55 /* Book.swift in Sources */,
 				074109F02EB208C200E5CD55 /* BooksEndpoint.swift in Sources */,

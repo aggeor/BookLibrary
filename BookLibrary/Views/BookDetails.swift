@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct BookDetailsView: View {
+    @EnvironmentObject var favoritesManager: FavoritesManager
     let book: Book
     @Environment(\.dismiss) private var dismiss
     
@@ -40,6 +41,7 @@ struct BookDetailsView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 FavoriteButton(book: book)
+                    .environmentObject(favoritesManager)
             }
         }
     }
