@@ -13,7 +13,7 @@ struct MainView: View {
         NavigationView {
             VStack(spacing: 0) {
                 headerView
-                if mainViewModel.isLoading{
+                if mainViewModel.isInitialLoading{
                     loadingView
                 } else if mainViewModel.books.isEmpty {
                     emptyView
@@ -85,6 +85,16 @@ struct MainView: View {
                             .environmentObject(favoritesManager)
                     }
                     .buttonStyle(PlainButtonStyle())
+                }
+                if mainViewModel.isPaginationLoading {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .scaleEffect(1.2)
+                            .padding(.vertical, 20)
+                        Spacer()
+                    }
                 }
             }
             .padding(.horizontal, 16)
