@@ -8,7 +8,7 @@ struct BookCard: View {
     let frameHeight = UIScreen.main.bounds.height / 8
     
     var body: some View {
-        HStack{
+        HStack(alignment: .top){
             if let imageURLString = book.formats["image/jpeg"],
                let url = URL(string: imageURLString) {
                 imageView(url: url)
@@ -18,6 +18,7 @@ struct BookCard: View {
                     .cornerRadius(12)
             }
             textsView
+            FavoriteButton(book: book)
         }
     }
     
@@ -45,7 +46,7 @@ struct BookCard: View {
     }
     
     var textsView: some View {
-        VStack(alignment: .leading,spacing: 8){
+        VStack(alignment: .leading, spacing: 8){
             Text(book.title)
                 .foregroundColor(.white)
                 .font(.system(size: 16, weight: .medium, design: .rounded))

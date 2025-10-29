@@ -16,6 +16,8 @@
 		074109EC2EB203F400E5CD55 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109EA2EB203F100E5CD55 /* NetworkManager.swift */; };
 		074109F02EB208C200E5CD55 /* BooksEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109EF2EB208BD00E5CD55 /* BooksEndpoint.swift */; };
 		074109F22EB2154600E5CD55 /* BookDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109F12EB2154400E5CD55 /* BookDetails.swift */; };
+		074109F42EB22D1B00E5CD55 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109F32EB22D1600E5CD55 /* FavoritesManager.swift */; };
+		074109F62EB22E1100E5CD55 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109F52EB22E0D00E5CD55 /* FavoriteButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		074109EA2EB203F100E5CD55 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		074109EF2EB208BD00E5CD55 /* BooksEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksEndpoint.swift; sourceTree = "<group>"; };
 		074109F12EB2154400E5CD55 /* BookDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetails.swift; sourceTree = "<group>"; };
+		074109F32EB22D1600E5CD55 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		074109F52EB22E0D00E5CD55 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -128,6 +132,7 @@
 		074109DF2EB203DC00E5CD55 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				074109F52EB22E0D00E5CD55 /* FavoriteButton.swift */,
 				074109F12EB2154400E5CD55 /* BookDetails.swift */,
 				074109DD2EB203DC00E5CD55 /* BookCard.swift */,
 				074109DE2EB203DC00E5CD55 /* MainView.swift */,
@@ -151,6 +156,7 @@
 		074109EE2EB2064E00E5CD55 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				074109F32EB22D1600E5CD55 /* FavoritesManager.swift */,
 				074109EA2EB203F100E5CD55 /* NetworkManager.swift */,
 			);
 			path = Utils;
@@ -301,10 +307,12 @@
 				074109EC2EB203F400E5CD55 /* NetworkManager.swift in Sources */,
 				074109E42EB203DC00E5CD55 /* Book.swift in Sources */,
 				074109F02EB208C200E5CD55 /* BooksEndpoint.swift in Sources */,
+				074109F62EB22E1100E5CD55 /* FavoriteButton.swift in Sources */,
 				074109E52EB203DC00E5CD55 /* MainViewModel.swift in Sources */,
 				074109E62EB203DC00E5CD55 /* BookCard.swift in Sources */,
 				074109F22EB2154600E5CD55 /* BookDetails.swift in Sources */,
 				074109E72EB203DC00E5CD55 /* MainView.swift in Sources */,
+				074109F42EB22D1B00E5CD55 /* FavoritesManager.swift in Sources */,
 				074109E82EB203DC00E5CD55 /* BookLibraryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -38,6 +38,9 @@ struct BookDetailsView: View {
                 backBtnView
                     .tint(.white)
             }
+            ToolbarItem(placement: .topBarTrailing) {
+                FavoriteButton(book: book)
+            }
         }
     }
     
