@@ -72,12 +72,14 @@ struct MainView: View {
         ScrollView {
             LazyVGrid(columns: adaptiveColumns, spacing: 16) {
                 ForEach(mainViewModel.books, id: \.id) { book in
-                    BookCard(book: book)
-                        .onAppear {
-                            Task {
-                                await mainViewModel.fetchNextIfNeeded(currentBook: book)
+                    NavigationLink(destination: BookDetailsView(book: book)) {
+                        BookCard(book: book)
+                            .onAppear {
+                                Task {
+                                    await mainViewModel.fetchNextIfNeeded(currentBook: book)
+                                }
                             }
-                        }
+                    }
                     .buttonStyle(PlainButtonStyle())
                 }
             }

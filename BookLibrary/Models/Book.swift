@@ -14,6 +14,7 @@ struct Book: Hashable, Codable{
     let authors: [Person]?
     let summaries: [String]?
     let translators: [Person]?
+    let editors: [Person]?
     let bookshelves: [String]?
     let languages: [String]?
     let copyright: Bool?
