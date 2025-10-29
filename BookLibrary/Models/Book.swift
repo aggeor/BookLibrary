@@ -18,6 +18,7 @@ struct Book: Hashable, Codable{
     let languages: [String]?
     let copyright: Bool?
     let media_type: String
+    let formats: [String: String]
     let download_count: Int
 }
 
