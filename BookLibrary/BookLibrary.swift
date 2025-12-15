@@ -1,40 +1,53 @@
 import SwiftUI
-import SwiftData
 
 @main
 struct BookLibrary: App {
     @StateObject var favoritesManager = FavoritesManager()
     @StateObject var themeManager = ThemeManager()
+    @StateObject var router = Router()
     
     var body: some Scene {
         WindowGroup {
             TabsView()
                 .environmentObject(favoritesManager)
                 .environmentObject(themeManager)
+                .environmentObject(router)
         }
     }
 }
+
 struct TabsView: View {
     @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var router: Router
+    @State private var selectedTab = 0
     
     var body: some View {
-        TabView {
-            MainView()
-                .tabItem {
-                    Label("Books", systemImage: "book")
-                }
+        TabView(selection: $selectedTab) {
+            NavigationView {
+                MainView()
+            }
+            .tabItem {
+                Label("Books", systemImage: "book")
+            }
+            .tag(0)
             
-            FavoritesView()
-                .tabItem {
-                    Label("Favorites", systemImage: "heart.fill")
-                }
+            NavigationView {
+                FavoritesView()
+            }
+            .tabItem {
+                Label("Favorites", systemImage: "heart.fill")
+            }
+            .tag(1)
             
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
+            NavigationView {
+                SettingsView()
+            }
+            .tabItem {
+                Label("Settings", systemImage: "gear")
+            }
+            .tag(2)
         }
-        .onAppear(){
+        .onAppear() {
             DispatchQueue.main.async {
                 themeManager.updateTabBar(
                     backgroundColor: UIColor(themeManager.backgroundColor),
@@ -44,7 +57,6 @@ struct TabsView: View {
             }
         }
         .onChange(of: themeManager.isDarkMode) { _ in
-            // Force tab bar to update when theme changes
             DispatchQueue.main.async {
                 themeManager.updateTabBar(
                     backgroundColor: UIColor(themeManager.backgroundColor),
@@ -53,5 +65,9 @@ struct TabsView: View {
                 )
             }
         }
-    }    
+        .onChange(of: selectedTab) { _ in
+            // Dismiss any presented route when switching tabs
+            router.dismiss()
+        }
+    }
 }

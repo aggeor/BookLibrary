@@ -1,10 +1,12 @@
 import SwiftUI
+
 struct MainView: View {
     @StateObject var mainViewModel: MainViewModel = MainViewModel()
     @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var router: Router
     
     var body: some View {
-        NavigationView {
+        ZStack {
             VStack(spacing: 0) {
                 headerView
                 if mainViewModel.isInitialLoading {
@@ -22,6 +24,14 @@ struct MainView: View {
             }
             .navigationBarHidden(true)
             .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
+            
+            NavigationLink(
+                destination: router.getDestinationView(),
+                isActive: $router.isPresented
+            ) {
+                EmptyView()
+            }
+            .hidden()
         }
     }
     
@@ -67,7 +77,9 @@ struct MainView: View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
                 ForEach(mainViewModel.books, id: \.id) { book in
-                    NavigationLink(destination: BookDetailsView(book: book)) {
+                    Button {
+                        router.navigate(to: .bookDetails(book))
+                    } label: {
                         BookCard(book: book)
                             .onAppear {
                                 Task {

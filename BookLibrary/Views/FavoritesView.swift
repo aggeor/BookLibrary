@@ -1,16 +1,16 @@
 import SwiftUI
+
 struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
     @EnvironmentObject var themeManager: ThemeManager
-    @State private var selectedBook: Book?
-    @State private var isNavigating = false
+    @EnvironmentObject var router: Router
 
     var favoriteBooks: [Book] {
         favoritesManager.favoriteBooks
     }
 
     var body: some View {
-        NavigationView {
+        ZStack {
             VStack(spacing: 0) {
                 headerView
                 if favoriteBooks.isEmpty {
@@ -19,10 +19,9 @@ struct FavoritesView: View {
                     ScrollView {
                         LazyVStack(spacing: 16) {
                             ForEach(favoriteBooks, id: \.id) { book in
-                                Button(action: {
-                                    selectedBook = book
-                                    isNavigating = true
-                                }) {
+                                Button {
+                                    router.navigate(to: .bookDetails(book))
+                                } label: {
                                     BookCard(book: book)
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -33,21 +32,17 @@ struct FavoritesView: View {
                     }
                     .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
                 }
-                
-                NavigationLink(
-                    destination: Group {
-                        if let book = selectedBook {
-                            BookDetailsView(book: book)
-                        }
-                    },
-                    isActive: $isNavigating
-                ) {
-                    EmptyView()
-                }
-                .hidden()
             }
             .navigationBarHidden(true)
             .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
+            
+            NavigationLink(
+                destination: router.getDestinationView(),
+                isActive: $router.isPresented
+            ) {
+                EmptyView()
+            }
+            .hidden()
         }
     }
     

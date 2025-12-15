@@ -3,22 +3,20 @@ struct SettingsView: View {
     @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                headerView
-                
-                ScrollView {
-                    VStack(spacing: 20) {
-                        themeToggleView
-                        Spacer()
-                    }
-                    .padding()
+        VStack(spacing: 0) {
+            headerView
+            
+            ScrollView {
+                VStack(spacing: 20) {
+                    themeToggleView
+                    Spacer()
                 }
-                .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
+                .padding()
             }
-            .navigationBarHidden(true)
             .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
         }
+        .navigationBarHidden(true)
+        .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
     }
     
     var headerView: some View {
