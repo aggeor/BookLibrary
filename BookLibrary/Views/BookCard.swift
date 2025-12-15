@@ -4,24 +4,21 @@ struct BookCard: View {
     var book: Book
     @EnvironmentObject var favoritesManager: FavoritesManager
     
-    // Adjust frame for each book card
-    let frameWidth = UIScreen.main.bounds.width / 5
-    let frameHeight = UIScreen.main.bounds.height / 8
-    
     var body: some View {
-        HStack(alignment: .top){
+        HStack(alignment: .top) {
             if let imageURL = book.imageURL {
                 imageView(url: imageURL)
             } else {
                 Color.gray
-                    .frame(width: frameWidth, height: frameHeight)
+                    .aspectRatio(0.67, contentMode: .fit)
                     .cornerRadius(12)
             }
             textsView
             FavoriteButton(book: book)
                 .environmentObject(favoritesManager)
         }
-        .contentShape(Rectangle()) 
+        .frame(height: 120)
+        .contentShape(Rectangle())
     }
     
     func imageView(url: URL) -> some View {
@@ -29,26 +26,25 @@ struct BookCard: View {
             switch phase {
             case .empty:
                 ProgressView()
-                    .frame(width: frameWidth, height: frameHeight)
+                    .frame(width: 80, height: 120)
             case .success(let image):
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: frameWidth, height: frameHeight)
+                    .frame(width: 80, height: 120)
                     .clipped()
-                    .cornerRadius(12)
             case .failure:
                 Color.gray
-                    .frame(width: frameWidth, height: frameHeight)
-                    .cornerRadius(12)
+                    .frame(width: 80, height: 120)
             @unknown default:
                 EmptyView()
             }
         }
+        .cornerRadius(12)
     }
     
     var textsView: some View {
-        VStack(alignment: .leading, spacing: 8){
+        VStack(alignment: .leading, spacing: 8) {
             Text(book.title)
                 .foregroundColor(.white)
                 .font(.system(size: 16, weight: .medium, design: .rounded))

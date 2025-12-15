@@ -25,9 +25,7 @@ struct BookDetailsView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Color.clear.frame(height: headerHeight)
                     
-                    textsView()
-                        .padding(.horizontal, 24)
-                    
+                    textsView
                 }
             }
         }
@@ -66,7 +64,8 @@ struct BookDetailsView: View {
                 placeholderHeader
             }
         }
-        .frame(width: UIScreen.main.bounds.width,height: headerHeight)
+        .frame(maxWidth: .infinity)
+        .frame(height: headerHeight)
         .overlay(headerGradient)
         .clipped()
     }
@@ -91,7 +90,7 @@ struct BookDetailsView: View {
         }
     }
     
-    func textsView() -> some View {
+    var textsView: some View {
         VStack(alignment: .leading, spacing: 8) {
             infoView()
             subjectsView()
@@ -107,16 +106,13 @@ struct BookDetailsView: View {
             dividerView
             
             moreInfoView()
-            
-            
         }
         .padding(.horizontal, 20)
         .padding(.top, 24)
+        .frame(maxWidth: .infinity)
         .background(.black)
         .cornerRadius(32)
-        .frame(width: UIScreen.main.bounds.width)
     }
-    
     
     func infoView() -> some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -161,7 +157,6 @@ struct BookDetailsView: View {
             }
         }
     }
-    
     
     func moreInfoView() -> some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -210,8 +205,7 @@ struct BookDetailsView: View {
                 }.joined(separator: ", ")
 
                 if !readableLanguages.isEmpty {
-                    
-                    HStack(spacing:8){
+                    HStack(spacing: 8) {
                         Image(systemName: "globe")
                             .foregroundColor(.gray)
                         Text("Languages: \(readableLanguages)")
@@ -222,13 +216,12 @@ struct BookDetailsView: View {
                 }
             }
             
-            HStack(spacing:8){
+            HStack(spacing: 8) {
                 Image(systemName: "arrow.down.square.fill")
                     .foregroundColor(.gray)
                 Text("Downloads: \(String(book.downloadCount))")
                     .font(.subheadline)
                     .foregroundColor(.white.opacity(0.8))
-                
             }
             if let copyright = book.isCopyrighted {
                 HStack(spacing: 6) {
@@ -241,7 +234,8 @@ struct BookDetailsView: View {
             }
         }
     }
-    var dividerView:some View{
+    
+    var dividerView: some View {
         Divider().background(Color.gray).padding(.vertical, 8)
     }
 }
