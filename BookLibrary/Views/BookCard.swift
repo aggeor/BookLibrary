@@ -2,7 +2,6 @@ import SwiftUI
 
 struct BookCard: View {
     var book: Book
-    @EnvironmentObject var favoritesManager: FavoritesManager
     
     var body: some View {
         HStack(alignment: .top) {
@@ -15,7 +14,6 @@ struct BookCard: View {
             }
             textsView
             FavoriteButton(book: book)
-                .environmentObject(favoritesManager)
         }
         .frame(height: 120)
         .contentShape(Rectangle())

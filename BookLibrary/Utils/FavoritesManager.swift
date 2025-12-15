@@ -3,17 +3,17 @@ import Combine
 
 @MainActor
 class FavoritesManager: ObservableObject {
-    @Published var favoriteBooks: Set<Int> = []
+    @Published var favoriteBooks: [Book] = []
     
     func isFavorite(_ book: Book) -> Bool {
-        favoriteBooks.contains(book.id)
+        favoriteBooks.contains(where: { $0.id == book.id })
     }
     
     func toggleFavorite(_ book: Book) {
-        if isFavorite(book) {
-            favoriteBooks.remove(book.id)
+        if let index = favoriteBooks.firstIndex(where: { $0.id == book.id }) {
+            favoriteBooks.remove(at: index)
         } else {
-            favoriteBooks.insert(book.id)
+            favoriteBooks.append(book)
         }
     }
 }

@@ -4,7 +4,6 @@ import SwiftData
 @main
 struct BookLibrary: App {
     @StateObject var favoritesManager = FavoritesManager()
-    @StateObject var mainViewModel: MainViewModel = MainViewModel()
     
     init() {
         let tabBarAppearance = UITabBarAppearance()
@@ -19,12 +18,12 @@ struct BookLibrary: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                MainView(mainViewModel: mainViewModel)
+                MainView()
                     .tabItem {
                         Label("Books", systemImage: "book")
                     }
                 
-                FavoritesView(mainViewModel: mainViewModel)
+                FavoritesView()
                     .tabItem {
                         Label("Favorites", systemImage: "heart.fill")
                     }

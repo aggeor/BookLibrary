@@ -2,12 +2,11 @@ import SwiftUI
 
 struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
-    @ObservedObject var mainViewModel: MainViewModel
     @State private var selectedBook: Book?
     @State private var isNavigating = false
 
     var favoriteBooks: [Book] {
-        mainViewModel.books.filter { favoritesManager.isFavorite($0) }
+        favoritesManager.favoriteBooks
     }
 
     var body: some View {

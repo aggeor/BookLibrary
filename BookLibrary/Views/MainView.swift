@@ -1,13 +1,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var favoritesManager: FavoritesManager
-    // 2 columns grid
-    private let adaptiveColumns = [
-        GridItem(.flexible())
-    ]
-
-    @ObservedObject var mainViewModel: MainViewModel
+    
+    @StateObject var mainViewModel: MainViewModel = MainViewModel()
     
     var body: some View {
         NavigationView {
@@ -73,7 +68,7 @@ struct MainView: View {
     
     var booksView: some View{
         ScrollView {
-            LazyVGrid(columns: adaptiveColumns, spacing: 16) {
+            LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
                 ForEach(mainViewModel.books, id: \.id) { book in
                     NavigationLink(destination: BookDetailsView(book: book)) {
                         BookCard(book: book)
@@ -82,7 +77,6 @@ struct MainView: View {
                                     await mainViewModel.fetchNextIfNeeded(currentBook: book)
                                 }
                             }
-                            .environmentObject(favoritesManager)
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
