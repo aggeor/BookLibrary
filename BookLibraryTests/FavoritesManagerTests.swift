@@ -13,19 +13,18 @@ final class FavoritesManagerTests: XCTestCase {
         sampleBook = Book(
             id: 1,
             title: "Sample Book",
-            subjects: [],
-            authors: [Person(name: "John Doe", birth_year: nil, death_year: nil)],
+            authors: [Person(name: "John Doe", birthYear: nil, deathYear: nil)],
+            authorNames: "John Doe",
+            imageURL: nil,
+            summary: "",
             summaries: [],
+            subjects: [],
+            languages: [],
+            downloadCount: 0,
+            isCopyrighted: nil,
             translators: [],
             editors: [],
-            bookshelves: [],
-            languages: ["en"],
-            copyright: nil,
-            media_type: "text",
-            formats: [:],
-            download_count: 100,
         )
-        
     }
     
     override func tearDown() {

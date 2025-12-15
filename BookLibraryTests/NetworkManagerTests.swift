@@ -25,23 +25,23 @@ final class NetworkManagerTests: XCTestCase {
     
     @MainActor
     func testFetchSuccessfullyDecodesValidJSON() async throws {
-        let mockBook = Book(
+        let mockBook = APIBook(
             id: 1,
             title: "Test Book",
             subjects: ["Fiction"],
-            authors: [Person(name: "Test Author", birth_year: 1950, death_year: 2000)],
+            authors: [APIPerson(name: "Test Author", birthYear: 1950, deathYear: 2000)],
             summaries: ["A test summary"],
             translators: [],
             editors: [],
             bookshelves: [],
             languages: ["en"],
             copyright: false,
-            media_type: "text",
+            mediaType: "text",
             formats: ["text/html": "https://example.com"],
-            download_count: 100
+            downloadCount: 100
         )
         
-        let mockWrapper = BookDataWrapper(
+        let mockWrapper = APIBooks(
             count: 1,
             next: nil,
             previous: nil,
@@ -61,7 +61,7 @@ final class NetworkManagerTests: XCTestCase {
         }
         
         let endpoint = MockEndpoint()
-        let result: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+        let result: APIBooks = try await networkManager.fetch(from: endpoint)
         
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result.results.first?.title, "Test Book")
@@ -83,7 +83,7 @@ final class NetworkManagerTests: XCTestCase {
         }
         
         let endpoint = MockEndpoint()
-        let result: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+        let result: APIBooks = try await networkManager.fetch(from: endpoint)
         
         XCTAssertNotNil(result)
     }
@@ -108,7 +108,7 @@ final class NetworkManagerTests: XCTestCase {
         let endpoint = MockEndpoint()
         
         do {
-            let _: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+            let _: APIBooks = try await networkManager.fetch(from: endpoint)
             XCTFail("Should have thrown invalidResponse error")
         } catch let error as NetworkError {
             if case .invalidResponse = error {
@@ -138,7 +138,7 @@ final class NetworkManagerTests: XCTestCase {
         let endpoint = MockEndpoint()
         
         do {
-            let _: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+            let _: APIBooks = try await networkManager.fetch(from: endpoint)
             XCTFail("Should have thrown decodingFailed error")
         } catch let error as NetworkError {
             if case .decodingFailed = error {
@@ -166,7 +166,7 @@ final class NetworkManagerTests: XCTestCase {
         let endpoint = MockEndpoint()
         
         do {
-            let _: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+            let _: APIBooks = try await networkManager.fetch(from: endpoint)
             XCTFail("Should have thrown clientError")
         } catch let error as NetworkError {
             if case .clientError(let statusCode) = error {
@@ -194,7 +194,7 @@ final class NetworkManagerTests: XCTestCase {
         let endpoint = MockEndpoint()
         
         do {
-            let _: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+            let _: APIBooks = try await networkManager.fetch(from: endpoint)
             XCTFail("Should have thrown clientError")
         } catch let error as NetworkError {
             if case .clientError(let statusCode) = error {
@@ -222,7 +222,7 @@ final class NetworkManagerTests: XCTestCase {
         let endpoint = MockEndpoint()
         
         do {
-            let _: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+            let _: APIBooks = try await networkManager.fetch(from: endpoint)
             XCTFail("Should have thrown serverError")
         } catch let error as NetworkError {
             if case .serverError(let statusCode) = error {
@@ -250,7 +250,7 @@ final class NetworkManagerTests: XCTestCase {
         let endpoint = MockEndpoint()
         
         do {
-            let _: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+            let _: APIBooks = try await networkManager.fetch(from: endpoint)
             XCTFail("Should have thrown serverError")
         } catch let error as NetworkError {
             if case .serverError(let statusCode) = error {
@@ -278,7 +278,7 @@ final class NetworkManagerTests: XCTestCase {
         let endpoint = MockEndpoint()
         
         do {
-            let _: BookDataWrapper = try await networkManager.fetch(from: endpoint)
+            let _: APIBooks = try await networkManager.fetch(from: endpoint)
             XCTFail("Should have thrown unknownError")
         } catch let error as NetworkError {
             if case .unknownError(let statusCode) = error {
@@ -311,7 +311,7 @@ final class NetworkManagerTests: XCTestCase {
     
     @MainActor
     private func createMockBookWrapperData() throws -> Data {
-        let mockBook = Book(
+        let mockBook = APIBook(
             id: 1,
             title: "Test",
             subjects: [],
@@ -322,12 +322,12 @@ final class NetworkManagerTests: XCTestCase {
             bookshelves: [],
             languages: ["en"],
             copyright: false,
-            media_type: "text",
+            mediaType: "text",
             formats: [:],
-            download_count: 0
+            downloadCount: 0
         )
         
-        let wrapper = BookDataWrapper(
+        let wrapper = APIBooks(
             count: 1,
             next: nil,
             previous: nil,

@@ -10,9 +10,8 @@ struct BookCard: View {
     
     var body: some View {
         HStack(alignment: .top){
-            if let imageURLString = book.formats["image/jpeg"],
-               let url = URL(string: imageURLString) {
-                imageView(url: url)
+            if let imageURL = book.imageURL {
+                imageView(url: imageURL)
             } else {
                 Color.gray
                     .frame(width: frameWidth, height: frameHeight)
@@ -54,8 +53,8 @@ struct BookCard: View {
                 .foregroundColor(.white)
                 .font(.system(size: 16, weight: .medium, design: .rounded))
                 .lineLimit(3)
-            if let authorNames = book.authors?.compactMap({ $0.name }).joined(separator: ", "),
-               !authorNames.isEmpty {
+            let authorNames = book.authorNames
+            if !authorNames.isEmpty {
                 Text(authorNames)
                     .font(.system(size: 12, weight: .medium, design: .rounded))
                     .foregroundColor(.white.opacity(0.8))

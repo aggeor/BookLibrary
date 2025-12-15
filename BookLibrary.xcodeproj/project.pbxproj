@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0735EAD22EF035D9004C862B /* APIBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0735EAD12EF035D0004C862B /* APIBooks.swift */; };
 		074109E32EB203DC00E5CD55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074109E02EB203DC00E5CD55 /* Assets.xcassets */; };
-		074109E42EB203DC00E5CD55 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109D92EB203DC00E5CD55 /* Book.swift */; };
+		074109E42EB203DC00E5CD55 /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109D92EB203DC00E5CD55 /* Books.swift */; };
 		074109E52EB203DC00E5CD55 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109DB2EB203DC00E5CD55 /* MainViewModel.swift */; };
 		074109E62EB203DC00E5CD55 /* BookCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109DD2EB203DC00E5CD55 /* BookCard.swift */; };
 		074109E72EB203DC00E5CD55 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074109DE2EB203DC00E5CD55 /* MainView.swift */; };
@@ -32,9 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0735EAD12EF035D0004C862B /* APIBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBooks.swift; sourceTree = "<group>"; };
 		0741099E2EB1FD7000E5CD55 /* BookLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		074109AD2EB1FD7000E5CD55 /* BookLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		074109D92EB203DC00E5CD55 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		074109D92EB203DC00E5CD55 /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		074109DB2EB203DC00E5CD55 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		074109DD2EB203DC00E5CD55 /* BookCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCard.swift; sourceTree = "<group>"; };
 		074109DE2EB203DC00E5CD55 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -95,8 +97,9 @@
 		074109DA2EB203DC00E5CD55 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0735EAD12EF035D0004C862B /* APIBooks.swift */,
 				074109EF2EB208BD00E5CD55 /* BooksEndpoint.swift */,
-				074109D92EB203DC00E5CD55 /* Book.swift */,
+				074109D92EB203DC00E5CD55 /* Books.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -252,13 +255,14 @@
 			files = (
 				074109F82EB22FCD00E5CD55 /* FavoritesView.swift in Sources */,
 				074109EC2EB203F400E5CD55 /* NetworkManager.swift in Sources */,
-				074109E42EB203DC00E5CD55 /* Book.swift in Sources */,
+				074109E42EB203DC00E5CD55 /* Books.swift in Sources */,
 				074109F02EB208C200E5CD55 /* BooksEndpoint.swift in Sources */,
 				074109F62EB22E1100E5CD55 /* FavoriteButton.swift in Sources */,
 				074109E52EB203DC00E5CD55 /* MainViewModel.swift in Sources */,
 				074109E62EB203DC00E5CD55 /* BookCard.swift in Sources */,
 				074109F22EB2154600E5CD55 /* BookDetails.swift in Sources */,
 				074109E72EB203DC00E5CD55 /* MainView.swift in Sources */,
+				0735EAD22EF035D9004C862B /* APIBooks.swift in Sources */,
 				074109F42EB22D1B00E5CD55 /* FavoritesManager.swift in Sources */,
 				074109E82EB203DC00E5CD55 /* BookLibrary.swift in Sources */,
 			);

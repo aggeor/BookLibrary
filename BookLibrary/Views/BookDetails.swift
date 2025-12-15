@@ -48,9 +48,8 @@ struct BookDetailsView: View {
     
     var headerView: some View {
         ZStack {
-            if let imageURLString = book.formats["image/jpeg"],
-               let url = URL(string: imageURLString) {
-                AsyncImage(url: url) { phase in
+            if let imageURL = book.imageURL {
+                AsyncImage(url: imageURL) { phase in
                     switch phase {
                     case .empty:
                         placeholderHeader
@@ -99,9 +98,9 @@ struct BookDetailsView: View {
             
             dividerView
             
-            if let summaries = book.summaries?.compactMap({ $0 }).joined(separator: ", "),
-               !summaries.isEmpty {
-                Text(summaries)
+            if let summary = book.summary,
+               !summary.isEmpty {
+                Text(summary)
                     .font(.body)
                     .foregroundColor(.white)
             }
@@ -122,15 +121,15 @@ struct BookDetailsView: View {
     func infoView() -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(book.title).font(.title).bold().foregroundColor(.white)
-            
-            if let authors = book.authors, !authors.isEmpty {
+            let authors = book.authors
+            if !authors.isEmpty {
                 let authorDetails = authors.map { author in
                     var name = author.name
-                    if let birth = author.birth_year, let death = author.death_year {
+                    if let birth = author.birthYear, let death = author.deathYear {
                         name += " (\(birth) – \(death))"
-                    } else if let birth = author.birth_year {
+                    } else if let birth = author.birthYear {
                         name += " (b. \(birth))"
-                    } else if let death = author.death_year {
+                    } else if let death = author.deathYear {
                         name += " (d. \(death))"
                     }
                     return name
@@ -147,8 +146,8 @@ struct BookDetailsView: View {
     func subjectsView() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                if let subjects = book.subjects,
-                   !subjects.isEmpty {
+                let subjects = book.subjects
+                if !subjects.isEmpty {
                     ForEach(subjects, id: \.self) { subject in
                         Text(subject)
                             .font(.subheadline)
@@ -166,14 +165,15 @@ struct BookDetailsView: View {
     
     func moreInfoView() -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            if let translators = book.translators, !translators.isEmpty {
+            let translators = book.translators
+            if !translators.isEmpty {
                 let translatorDetails = translators.map { translator in
                     var name = translator.name
-                    if let birth = translator.birth_year, let death = translator.death_year {
+                    if let birth = translator.birthYear, let death = translator.deathYear {
                         name += " (\(birth) – \(death))"
-                    } else if let birth = translator.birth_year {
+                    } else if let birth = translator.birthYear {
                         name += " (b. \(birth))"
-                    } else if let death = translator.death_year {
+                    } else if let death = translator.deathYear {
                         name += " (d. \(death))"
                     }
                     return name
@@ -184,14 +184,15 @@ struct BookDetailsView: View {
                     .foregroundColor(.white.opacity(0.8))
                     .lineLimit(3)
             }
-            if let editors = book.editors, !editors.isEmpty {
+            let editors = book.editors
+            if !editors.isEmpty {
                 let editorDetails = editors.map { editor in
                     var name = editor.name
-                    if let birth = editor.birth_year, let death = editor.death_year {
+                    if let birth = editor.birthYear, let death = editor.deathYear {
                         name += " (\(birth) – \(death))"
-                    } else if let birth = editor.birth_year {
+                    } else if let birth = editor.birthYear {
                         name += " (b. \(birth))"
-                    } else if let death = editor.death_year {
+                    } else if let death = editor.deathYear {
                         name += " (d. \(death))"
                     }
                     return name
@@ -202,8 +203,8 @@ struct BookDetailsView: View {
                     .foregroundColor(.white.opacity(0.8))
                     .lineLimit(3)
             }
-            if let languages = book.languages,
-               !languages.isEmpty {
+            let languages = book.languages
+            if !languages.isEmpty {
                 let readableLanguages = languages.compactMap { code in
                     Locale.current.localizedString(forLanguageCode: code)
                 }.joined(separator: ", ")
@@ -224,12 +225,12 @@ struct BookDetailsView: View {
             HStack(spacing:8){
                 Image(systemName: "arrow.down.square.fill")
                     .foregroundColor(.gray)
-                Text("Downloads: \(String(book.download_count))")
+                Text("Downloads: \(String(book.downloadCount))")
                     .font(.subheadline)
                     .foregroundColor(.white.opacity(0.8))
                 
             }
-            if let copyright = book.copyright {
+            if let copyright = book.isCopyrighted {
                 HStack(spacing: 6) {
                     Image(systemName: copyright ? "lock.fill" : "book.fill")
                         .foregroundColor(copyright ? .red : .green)

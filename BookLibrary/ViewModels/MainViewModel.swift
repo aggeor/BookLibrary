@@ -19,9 +19,10 @@ class MainViewModel: ObservableObject {
         defer { isInitialLoading = false }
 
         do {
-            let wrapper = try await networkManager.fetch(from: BooksEndpoint(page: currentPage)) as BookDataWrapper
-            totalPages = wrapper.count
-            books.append(contentsOf: wrapper.results)
+            let response = try await networkManager.fetch(from: BooksEndpoint(page: currentPage)) as APIBooks
+            totalPages = response.count
+            let newBooks = response.results.map(Book.init)
+            books.append(contentsOf: newBooks)
             currentPage += 1
         } catch {
             print("Failed to fetch books: \(error.localizedDescription)")
@@ -36,9 +37,10 @@ class MainViewModel: ObservableObject {
         defer { isPaginationLoading = false }
 
         do {
-            let wrapper = try await networkManager.fetch(from: BooksEndpoint(page:currentPage)) as BookDataWrapper
-            totalPages = Int(ceil(Double(wrapper.count) / Double(wrapper.results.count)))
-            books.append(contentsOf: wrapper.results)
+            let response = try await networkManager.fetch(from: BooksEndpoint(page:currentPage)) as APIBooks
+            totalPages = Int(ceil(Double(response.count) / Double(response.results.count)))
+            let newBooks = response.results.map(Book.init)
+            books.append(contentsOf: newBooks)
             currentPage += 1
         } catch {
             print("Failed to fetch books: \(error.localizedDescription)")

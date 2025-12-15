@@ -16,7 +16,7 @@ final class MockNetworkManager: NetworkManaging {
         }
 
         if shouldReturnEmpty {
-            let wrapper = BookDataWrapper(count: 0,next: nil, previous: nil, results: [])
+            let wrapper = APIBooks(count: 0,next: nil, previous: nil, results: [])
             return wrapper as! T
         }
 
@@ -26,23 +26,23 @@ final class MockNetworkManager: NetworkManaging {
 
         // Return mock data
         let mockBooks = [
-            Book(
+            APIBook(
                 id: 1,
                 title: "Book 1",
                 subjects: [],
-                authors: [Person(name: "Author 1", birth_year: nil, death_year: nil)],
+                authors: [APIPerson(name: "Author 1", birthYear: nil, deathYear: nil)],
                 summaries: [],
                 translators: [],
                 editors: [],
                 bookshelves: [],
                 languages: ["en"],
                 copyright: nil,
-                media_type: "text",
+                mediaType: "text",
                 formats: [:],
-                download_count: 10,
+                downloadCount: 10,
             )
         ]
-        let wrapper = BookDataWrapper(count: 10, next:nil,previous: nil, results: mockBooks)
+        let wrapper = APIBooks(count: 10, next:nil,previous: nil, results: mockBooks)
         return wrapper as! T
     }
 }
