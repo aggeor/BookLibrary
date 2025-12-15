@@ -54,6 +54,6 @@ final class FavoritesManagerTests: XCTestCase {
     @MainActor
     func testFavoritesListContainsAddedBook() {
         favoritesManager.toggleFavorite(sampleBook)
-        XCTAssertTrue(favoritesManager.favoriteBooks.contains(sampleBook.id))
+        XCTAssertTrue(favoritesManager.favoriteBooks.contains(sampleBook))
     }
 }
