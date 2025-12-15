@@ -1,14 +1,13 @@
 import SwiftUI
-
 struct MainView: View {
-    
     @StateObject var mainViewModel: MainViewModel = MainViewModel()
+    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
                 headerView
-                if mainViewModel.isInitialLoading{
+                if mainViewModel.isInitialLoading {
                     loadingView
                 } else if mainViewModel.books.isEmpty {
                     emptyView
@@ -16,15 +15,14 @@ struct MainView: View {
                     booksView
                 }
             }
-            .navigationBarHidden(true)
             .task {
                 if mainViewModel.books.isEmpty {
                     await mainViewModel.fetchBooks()
                 }
             }
+            .navigationBarHidden(true)
+            .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
         }
-        .navigationTitle("Books")
-        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
     
     var headerView: some View {
@@ -32,41 +30,40 @@ struct MainView: View {
             HStack {
                 Text("Popular Books")
                     .font(.title2)
-                    .foregroundColor(.white)
+                    .foregroundColor(themeManager.textColor)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.horizontal, 16)
         }
         .padding(.vertical, 12)
-        .background(Color.black)
+        .background(themeManager.backgroundColor)
     }
     
-    
-    var loadingView: some View{
-        ZStack{
-            Color.black
+    var loadingView: some View {
+        ZStack {
+            themeManager.backgroundColor
                 .edgesIgnoringSafeArea(.all)
             ProgressView()
-                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .progressViewStyle(CircularProgressViewStyle(tint: themeManager.textColor))
                 .scaleEffect(1.5)
         }
     }
     
-    var emptyView: some View{
+    var emptyView: some View {
         VStack(spacing: 0) {
             Text("No books found")
                 .font(.title3)
-                .foregroundColor(.white)
+                .foregroundColor(themeManager.textColor)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.vertical, 12)
-        .background(Color.black)
+        .background(themeManager.backgroundColor)
     }
     
-    var booksView: some View{
+    var booksView: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
                 ForEach(mainViewModel.books, id: \.id) { book in
@@ -84,7 +81,7 @@ struct MainView: View {
                     HStack {
                         Spacer()
                         ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .progressViewStyle(CircularProgressViewStyle(tint: themeManager.textColor))
                             .scaleEffect(1.2)
                             .padding(.vertical, 20)
                         Spacer()
@@ -94,6 +91,5 @@ struct MainView: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
         }
-        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
 }

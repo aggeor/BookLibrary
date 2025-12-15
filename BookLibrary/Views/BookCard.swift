@@ -1,7 +1,7 @@
 import SwiftUI
-
 struct BookCard: View {
     var book: Book
+    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         HStack(alignment: .top) {
@@ -44,14 +44,14 @@ struct BookCard: View {
     var textsView: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(book.title)
-                .foregroundColor(.white)
+                .foregroundColor(themeManager.textColor)
                 .font(.system(size: 16, weight: .medium, design: .rounded))
                 .lineLimit(3)
             let authorNames = book.authorNames
             if !authorNames.isEmpty {
                 Text(authorNames)
                     .font(.system(size: 12, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(themeManager.secondaryTextColor)
                     .lineLimit(3)
             }
         }

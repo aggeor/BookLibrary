@@ -1,7 +1,7 @@
 import SwiftUI
-
 struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
+    @EnvironmentObject var themeManager: ThemeManager
     @State private var selectedBook: Book?
     @State private var isNavigating = false
 
@@ -31,7 +31,7 @@ struct FavoritesView: View {
                         }
                         .padding(.vertical)
                     }
-                    .background(Color.black.edgesIgnoringSafeArea(.all))
+                    .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
                 }
                 
                 NavigationLink(
@@ -47,9 +47,8 @@ struct FavoritesView: View {
                 .hidden()
             }
             .navigationBarHidden(true)
+            .background(themeManager.backgroundColor.edgesIgnoringSafeArea(.all))
         }
-        .navigationTitle("Books")
-        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
     
     var headerView: some View {
@@ -57,25 +56,25 @@ struct FavoritesView: View {
             HStack {
                 Text("Favorite Books")
                     .font(.title2)
-                    .foregroundColor(.white)
+                    .foregroundColor(themeManager.textColor)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.horizontal, 16)
         }
         .padding(.vertical, 12)
-        .background(Color.black)
+        .background(themeManager.backgroundColor)
     }
     
-    var emptyView: some View{
+    var emptyView: some View {
         VStack(spacing: 0) {
             Text("No favorite books")
                 .font(.title3)
-                .foregroundColor(.white)
+                .foregroundColor(themeManager.textColor)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.horizontal, 16)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.vertical, 12)
-        .background(Color.black)
+        .background(themeManager.backgroundColor)
     }
 }

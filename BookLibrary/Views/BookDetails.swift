@@ -3,6 +3,7 @@ import SwiftUI
 struct BookDetailsView: View {
     let book: Book
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var themeManager: ThemeManager
     
     private let headerHeight: CGFloat = 250
     
@@ -28,13 +29,13 @@ struct BookDetailsView: View {
                 }
             }
         }
-        .background(Color.black)
+        .background(themeManager.backgroundColor)
         .ignoresSafeArea(edges: .top)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 backBtnView
-                    .tint(.white)
+                    .tint(themeManager.textColor)
             }
             ToolbarItem(placement: .topBarTrailing) {
                 FavoriteButton(book: book)
@@ -74,7 +75,10 @@ struct BookDetailsView: View {
 
     var headerGradient: some View {
         LinearGradient(
-            gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black]),
+            gradient: Gradient(colors: [
+                themeManager.backgroundColor.opacity(0.0),
+                themeManager.backgroundColor
+            ]),
             startPoint: .top,
             endPoint: .bottom
         )
@@ -99,7 +103,7 @@ struct BookDetailsView: View {
                !summary.isEmpty {
                 Text(summary)
                     .font(.body)
-                    .foregroundColor(.white)
+                    .foregroundColor(themeManager.textColor)
             }
             dividerView
             
@@ -108,13 +112,16 @@ struct BookDetailsView: View {
         .padding(.horizontal, 20)
         .padding(.top, 24)
         .frame(maxWidth: .infinity)
-        .background(.black)
+        .background(themeManager.backgroundColor)
         .cornerRadius(32)
     }
     
     func infoView() -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(book.title).font(.title).bold().foregroundColor(.white)
+            Text(book.title)
+                .font(.title)
+                .bold()
+                .foregroundColor(themeManager.textColor)
             let authors = book.authors
             if !authors.isEmpty {
                 let authorDetails = authors.map { author in
@@ -131,7 +138,7 @@ struct BookDetailsView: View {
 
                 Text(authorDetails)
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(themeManager.secondaryTextColor)
                     .lineLimit(3)
             }
         }
@@ -145,7 +152,7 @@ struct BookDetailsView: View {
                     ForEach(subjects, id: \.self) { subject in
                         Text(subject)
                             .font(.subheadline)
-                            .foregroundColor(.white)
+                            .foregroundColor(themeManager.textColor)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
                             .background(Color.yellow.opacity(0.3))
@@ -174,7 +181,7 @@ struct BookDetailsView: View {
 
                 Text("Translators: \(translatorDetails)")
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(themeManager.secondaryTextColor)
                     .lineLimit(3)
             }
             let editors = book.editors
@@ -193,7 +200,7 @@ struct BookDetailsView: View {
 
                 Text("Editors: \(editorDetails)")
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(themeManager.secondaryTextColor)
                     .lineLimit(3)
             }
             let languages = book.languages
@@ -208,7 +215,7 @@ struct BookDetailsView: View {
                             .foregroundColor(.gray)
                         Text("Languages: \(readableLanguages)")
                             .font(.subheadline)
-                            .foregroundColor(.white.opacity(0.8))
+                            .foregroundColor(themeManager.secondaryTextColor)
                             .lineLimit(3)
                     }
                 }
@@ -219,7 +226,7 @@ struct BookDetailsView: View {
                     .foregroundColor(.gray)
                 Text("Downloads: \(String(book.downloadCount))")
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(themeManager.secondaryTextColor)
             }
             if let copyright = book.isCopyrighted {
                 HStack(spacing: 6) {
@@ -227,13 +234,15 @@ struct BookDetailsView: View {
                         .foregroundColor(copyright ? .red : .green)
                     Text(copyright ? "Copyrighted" : "Public Domain")
                         .font(.subheadline)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(themeManager.secondaryTextColor)
                 }
             }
         }
     }
     
     var dividerView: some View {
-        Divider().background(Color.gray).padding(.vertical, 8)
+        Divider()
+            .background(themeManager.dividerColor)
+            .padding(.vertical, 8)
     }
 }
