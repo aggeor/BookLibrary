@@ -17,9 +17,11 @@ struct MainView: View {
                     booksView
                 }
             }
-            .task {
-                if mainViewModel.books.isEmpty {
-                    await mainViewModel.fetchBooks()
+            .onAppear {
+                Task {
+                    if mainViewModel.books.isEmpty {
+                        await mainViewModel.fetchBooks()
+                    }
                 }
             }
             .navigationBarHidden(true)
